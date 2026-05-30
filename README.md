@@ -15,7 +15,7 @@ PlantUML Architect is a local Codex plugin that makes Codex design web applicati
 Clone this repository:
 
 ```powershell
-git clone https://github.com/<your-org-or-user>/plantuml-architect.git
+git clone https://github.com/lux0166/plantuml-architect.git
 cd plantuml-architect
 ```
 
