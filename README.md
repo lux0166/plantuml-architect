@@ -27,14 +27,17 @@ codex plugin marketplace add .
 
 Then open Codex and install the `plantuml-architect` plugin from the `PlantUML Architect` marketplace.
 
-## Runtime Setup
+## Runtime Requirements
 
-Java is required. Java 17+ is recommended.
+Java/JDK 17 or newer is required. The renderer calls `java` locally, so Java must be available in PATH, `JAVA_HOME\bin\java.exe`, or a standard Windows install path such as `C:\Program Files\Java\...\bin\java.exe`.
 
-Install the PlantUML JAR into the plugin assets folder:
+This repository does not include `plantuml.jar`. Download the official PlantUML JAR from https://github.com/plantuml/plantuml/releases/latest/download/plantuml.jar, then use one of these setup options:
+
+- Save the downloaded JAR at `.\plugins\plantuml-architect\assets\plantuml.jar`.
+- Or keep the JAR anywhere and set `PLANTUML_JAR`:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\install-plantuml-runtime.ps1
+$env:PLANTUML_JAR = "C:\path\to\plantuml.jar"
 ```
 
 Test the renderer:
@@ -82,11 +85,10 @@ plugins/
     .codex-plugin/plugin.json
     skills/plantuml-architect/SKILL.md
     scripts/render-plantuml.ps1
-    scripts/install-plantuml-runtime.ps1
     templates/*.puml
     assets/README.md
 ```
 
 ## Notes
 
-This repository does not vendor `plantuml.jar`. The runtime install script downloads the official JAR from the PlantUML GitHub releases page. PlantUML itself is developed at https://github.com/plantuml/plantuml.
+This repository does not vendor `plantuml.jar`. Users must install Java/JDK 17+ and provide the official PlantUML JAR themselves. PlantUML itself is developed at https://github.com/plantuml/plantuml.

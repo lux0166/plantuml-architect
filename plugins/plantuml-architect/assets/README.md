@@ -15,9 +15,10 @@ JAR lookup order used by `scripts/render-plantuml.ps1`:
 
 Recommended local setup:
 
-1. Run `scripts/install-plantuml-runtime.ps1` from the plugin root, or download the official PlantUML JAR manually.
-2. Save it as `assets/plantuml.jar`, or set `PLANTUML_JAR` to its absolute path.
-3. Test the runtime:
+1. Install Java/JDK 17 or newer.
+2. Download the official PlantUML JAR from https://github.com/plantuml/plantuml/releases/latest/download/plantuml.jar.
+3. Save it as `assets/plantuml.jar`, or set `PLANTUML_JAR` to its absolute path.
+4. Test the runtime:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/render-plantuml.ps1 -TestDot
