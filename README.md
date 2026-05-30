@@ -1,13 +1,13 @@
 # PlantUML Architect for Codex
 
-PlantUML Architect is a local Codex plugin that makes Codex design web application architecture before coding. It creates PlantUML source files for use case, component, sequence, class, activity, and deployment diagrams, then renders them to SVG through the local PlantUML CLI.
+PlantUML Architect is a local Codex plugin that makes Codex design web application architecture before coding. It creates PlantUML source files for use case, component, sequence, class, activity, and deployment diagrams, lets users review or edit the draft, then renders final SVG/PNG only after approval.
 
 ## What It Does
 
 - Enforces a diagram-as-code workflow for web projects.
 - Creates architecture files under `docs/architecture/`.
 - Provides reusable PlantUML templates for common UML diagrams.
-- Renders `.puml` or `.plantuml` files to `.svg` or `.png`.
+- Renders `.puml` or `.plantuml` files to `.svg` or `.png` only after explicit approval.
 - Creates optional `.drawio` handoff files for manual drag-and-drop editing in diagrams.net/draw.io.
 - Keeps PlantUML runtime separate from the repository so the plugin stays lightweight.
 
@@ -46,6 +46,7 @@ Tạo use case diagram trước khi code.
 Thiết kế kiến trúc PlantUML cho app bán hàng.
 Generate sequence diagram for checkout flow.
 Tạo bản draw.io để kéo thả chỉnh sơ đồ.
+Duyệt rồi render final SVG.
 ```
 
 ## Runtime Requirements
@@ -99,10 +100,18 @@ The skill guides Codex to create:
 - `docs/architecture/activity-<flow>.puml`
 - `docs/architecture/deployment.puml`
 
-Render project diagrams:
+Default workflow:
+
+1. Codex creates draft `.puml` files.
+2. You review or edit the draft.
+3. If manual layout editing is needed, create/edit a `.drawio` handoff.
+4. After you approve the draft, render final SVG/PNG.
+
+Approve and render PlantUML diagrams:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\render-plantuml.ps1 `
+powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\approve-render.ps1 `
+  -Approved `
   -InputPath .\docs\architecture `
   -OutputDir .\docs\architecture\out
 ```
@@ -114,7 +123,7 @@ powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\cr
   -OutputPath .\docs\architecture\manual-edit.drawio
 ```
 
-Open the `.drawio` file in diagrams.net/draw.io. PlantUML remains the source of truth; the draw.io file is a presentation/manual-edit copy and can drift from the `.puml` source.
+Open the `.drawio` file in diagrams.net/draw.io or draw.io Desktop. Export SVG/PNG from draw.io after approval. PlantUML remains the source of truth; the draw.io file is a presentation/manual-edit copy and can drift from the `.puml` source.
 
 ## Repository Layout
 
@@ -125,6 +134,7 @@ plugins/
     .codex-plugin/plugin.json
     skills/plantuml-architect/SKILL.md
     scripts/render-plantuml.ps1
+    scripts/approve-render.ps1
     scripts/install-plantuml-runtime.ps1
     scripts/create-drawio-handoff.ps1
     templates/*.puml

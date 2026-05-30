@@ -1,24 +1,25 @@
 {
   "name": "plantuml-architect",
   "version": "0.1.0",
-  "description": "Create and render PlantUML/UML architecture diagrams before coding web applications.",
+  "description": "Create draft-review-approve PlantUML/UML architecture diagrams before coding web applications.",
   "author": {
     "name": "Local developer"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "PlantUML Architect",
-    "shortDescription": "Design web architecture and UML with PlantUML before coding.",
-    "longDescription": "PlantUML Architect gives Codex a diagram-as-code workflow for UML use case, sequence, class, activity, component, and deployment diagrams. It recognizes English and Vietnamese diagram requests such as PlantUML, UML, vẽ UML, sơ đồ use case, sơ đồ lớp, and thiết kế kiến trúc. It creates PlantUML files under docs/architecture, renders them to SVG through the local PlantUML CLI, and can create editable draw.io handoff files for drag-and-drop presentation tweaks.",
+    "shortDescription": "Draft, review, approve, then render UML diagrams.",
+    "longDescription": "PlantUML Architect gives Codex a draft-review-approve workflow for UML use case, sequence, class, activity, component, and deployment diagrams. It recognizes English and Vietnamese diagram requests such as PlantUML, UML, vẽ UML, sơ đồ use case, sơ đồ lớp, bấm duyệt, and thiết kế kiến trúc. It creates PlantUML files under docs/architecture, waits for user approval before final SVG/PNG rendering, and can create editable draw.io handoff files for drag-and-drop presentation tweaks.",
     "developerName": "Local developer",
     "category": "Productivity",
     "capabilities": [
       "PlantUML diagrams",
       "UML architecture planning",
+      "Approval-gated rendering",
       "Draw.io handoff diagrams",
       "Vietnamese UML requests",
       "Web application design"
     ],
-    "defaultPrompt": "Design the architecture first with PlantUML diagrams, then implement the web application."
+    "defaultPrompt": "Draft the architecture first with PlantUML diagrams, wait for approval, then render final diagrams and implement the web application."
   }
 }
