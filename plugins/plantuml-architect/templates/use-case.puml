@@ -1,0 +1,32 @@
+@startuml use-case
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam usecase {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  ArrowColor #334155
+}
+
+actor Visitor
+actor Customer
+actor Admin
+
+rectangle "Web Application" {
+  usecase "Browse public pages" as UC_Browse
+  usecase "Register account" as UC_Register
+  usecase "Sign in" as UC_Login
+  usecase "Manage profile" as UC_Profile
+  usecase "Use primary feature" as UC_Primary
+  usecase "Manage content" as UC_Content
+  usecase "View reports" as UC_Reports
+}
+
+Visitor --> UC_Browse
+Visitor --> UC_Register
+Customer --> UC_Login
+Customer --> UC_Profile
+Customer --> UC_Primary
+Admin --> UC_Content
+Admin --> UC_Reports
+@enduml

@@ -1,0 +1,27 @@
+@startuml activity-primary-flow
+skinparam shadowing false
+skinparam activity {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  ArrowColor #334155
+}
+
+start
+:Open web application;
+if (Authenticated?) then (yes)
+  :Load dashboard;
+else (no)
+  :Show sign in page;
+  :Validate credentials;
+  if (Valid credentials?) then (yes)
+    :Create session;
+  else (no)
+    :Show error message;
+    stop
+  endif
+endif
+:Perform primary action;
+:Persist changes;
+:Show confirmation;
+stop
+@enduml

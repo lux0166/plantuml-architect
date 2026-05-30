@@ -1,0 +1,7 @@
+plugins/plantuml-architect/assets/plantuml.jar
+docs/architecture/out/
+test-output/
+*.tmp
+*.log
+.DS_Store
+Thumbs.db

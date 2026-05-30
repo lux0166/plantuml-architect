@@ -1,0 +1,92 @@
+# PlantUML Architect for Codex
+
+PlantUML Architect is a local Codex plugin that makes Codex design web application architecture before coding. It creates PlantUML source files for use case, component, sequence, class, activity, and deployment diagrams, then renders them to SVG through the local PlantUML CLI.
+
+## What It Does
+
+- Enforces a diagram-as-code workflow for web projects.
+- Creates architecture files under `docs/architecture/`.
+- Provides reusable PlantUML templates for common UML diagrams.
+- Renders `.puml` or `.plantuml` files to `.svg` or `.png`.
+- Keeps PlantUML runtime separate from the repository so the plugin stays lightweight.
+
+## Install In Codex
+
+Clone this repository:
+
+```powershell
+git clone https://github.com/<your-org-or-user>/plantuml-architect.git
+cd plantuml-architect
+```
+
+Add this repository as a Codex plugin marketplace:
+
+```powershell
+codex plugin marketplace add .
+```
+
+Then open Codex and install the `plantuml-architect` plugin from the `PlantUML Architect` marketplace.
+
+## Runtime Setup
+
+Java is required. Java 17+ is recommended.
+
+Install the PlantUML JAR into the plugin assets folder:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\install-plantuml-runtime.ps1
+```
+
+Test the renderer:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\render-plantuml.ps1 `
+  -InputPath .\plugins\plantuml-architect\templates `
+  -OutputDir .\test-output
+```
+
+If PlantUML reports a Graphviz issue, install Graphviz or pass `-GraphvizDot <path-to-dot.exe>`.
+
+## Usage
+
+Ask Codex for architecture first:
+
+```text
+Design the architecture for a shopping web app with PlantUML before coding.
+```
+
+The skill guides Codex to create:
+
+- `docs/architecture/requirements.md`
+- `docs/architecture/use-case.puml`
+- `docs/architecture/component.puml`
+- `docs/architecture/sequence-<flow>.puml`
+- `docs/architecture/class-domain.puml`
+- `docs/architecture/activity-<flow>.puml`
+- `docs/architecture/deployment.puml`
+
+Render project diagrams:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\render-plantuml.ps1 `
+  -InputPath .\docs\architecture `
+  -OutputDir .\docs\architecture\out
+```
+
+## Repository Layout
+
+```text
+marketplace.json
+plugins/
+  plantuml-architect/
+    .codex-plugin/plugin.json
+    skills/plantuml-architect/SKILL.md
+    scripts/render-plantuml.ps1
+    scripts/install-plantuml-runtime.ps1
+    templates/*.puml
+    assets/README.md
+```
+
+## Notes
+
+This repository does not vendor `plantuml.jar`. The runtime install script downloads the official JAR from the PlantUML GitHub releases page. PlantUML itself is developed at https://github.com/plantuml/plantuml.

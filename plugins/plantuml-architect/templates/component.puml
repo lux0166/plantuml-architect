@@ -1,0 +1,35 @@
+@startuml component-web-architecture
+skinparam shadowing false
+skinparam componentStyle rectangle
+skinparam component {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  ArrowColor #334155
+}
+
+actor User
+
+package "Client" {
+  [Browser] as Browser
+  [Web UI] as WebUI
+}
+
+package "Server" {
+  [API Routes] as API
+  [Auth Service] as Auth
+  [Domain Services] as Domain
+  [Background Jobs] as Jobs
+}
+
+database "Application DB" as DB
+cloud "External Providers" as Providers
+
+User --> Browser
+Browser --> WebUI
+WebUI --> API
+API --> Auth
+API --> Domain
+Domain --> DB
+Jobs --> DB
+Domain --> Providers
+@enduml

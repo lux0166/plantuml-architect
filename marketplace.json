@@ -1,0 +1,20 @@
+{
+  "name": "plantuml-architect",
+  "interface": {
+    "displayName": "PlantUML Architect"
+  },
+  "plugins": [
+    {
+      "name": "plantuml-architect",
+      "source": {
+        "source": "local",
+        "path": "./plugins/plantuml-architect"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+@startuml deployment-web-runtime
+skinparam shadowing false
+skinparam node {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+}
+
+node "User Device" as Device {
+  artifact "Browser"
+}
+
+node "Web Hosting" as WebHost {
+  artifact "Static Assets"
+  artifact "SSR/App Runtime"
+}
+
+node "API Runtime" as ApiRuntime {
+  artifact "API Handlers"
+  artifact "Domain Services"
+}
+
+database "Managed Database" as DB
+cloud "External Services" as External
+
+Device --> WebHost : HTTPS
+WebHost --> ApiRuntime : HTTPS/API
+ApiRuntime --> DB : SQL/ORM
+ApiRuntime --> External : HTTPS
+@enduml

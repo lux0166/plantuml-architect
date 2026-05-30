@@ -1,0 +1,27 @@
+@startuml sequence-primary-flow
+skinparam shadowing false
+skinparam sequence {
+  ArrowColor #334155
+  LifeLineBorderColor #64748B
+  ParticipantBorderColor #334155
+  ParticipantBackgroundColor #F8FAFC
+}
+
+actor User
+participant "Web UI" as UI
+participant "API Controller" as API
+participant "Domain Service" as Service
+database "Database" as DB
+participant "External Service" as External
+
+User -> UI: Submit request
+UI -> API: POST /api/resource
+API -> Service: validate and execute command
+Service -> DB: read/write domain data
+DB --> Service: result
+Service -> External: optional side effect
+External --> Service: accepted
+Service --> API: response DTO
+API --> UI: 200 OK
+UI --> User: Show result
+@enduml

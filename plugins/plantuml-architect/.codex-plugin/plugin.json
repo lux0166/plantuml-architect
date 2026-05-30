@@ -1,0 +1,22 @@
+{
+  "name": "plantuml-architect",
+  "version": "0.1.0",
+  "description": "Create and render PlantUML architecture diagrams before coding web applications.",
+  "author": {
+    "name": "Local developer"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "PlantUML Architect",
+    "shortDescription": "Design web architecture with PlantUML before coding.",
+    "longDescription": "PlantUML Architect gives Codex a diagram-as-code workflow for use case, sequence, class, activity, component, and deployment diagrams. It creates PlantUML files under docs/architecture and renders them to SVG through the local PlantUML CLI.",
+    "developerName": "Local developer",
+    "category": "Productivity",
+    "capabilities": [
+      "PlantUML diagrams",
+      "UML architecture planning",
+      "Web application design"
+    ],
+    "defaultPrompt": "Design the architecture first with PlantUML diagrams, then implement the web application."
+  }
+}

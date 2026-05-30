@@ -1,0 +1,44 @@
+@startuml class-domain
+skinparam shadowing false
+skinparam class {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  ArrowColor #334155
+}
+
+class User {
+  +id: string
+  +email: string
+  +role: Role
+  +createdAt: datetime
+}
+
+class Session {
+  +id: string
+  +userId: string
+  +expiresAt: datetime
+}
+
+class Resource {
+  +id: string
+  +ownerId: string
+  +status: ResourceStatus
+  +createdAt: datetime
+}
+
+enum Role {
+  CUSTOMER
+  ADMIN
+}
+
+enum ResourceStatus {
+  DRAFT
+  ACTIVE
+  ARCHIVED
+}
+
+User "1" -- "0..*" Session
+User "1" -- "0..*" Resource
+Resource --> ResourceStatus
+User --> Role
+@enduml
