@@ -1,25 +1,23 @@
 {
   "name": "plantuml-architect",
   "version": "0.1.0",
-  "description": "Create draft-review-approve PlantUML/UML architecture diagrams before coding web applications.",
+  "description": "Create and render PlantUML/UML architecture diagrams before coding web applications.",
   "author": {
     "name": "Local developer"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "PlantUML Architect",
-    "shortDescription": "Draft, review, approve, then render UML diagrams.",
-    "longDescription": "PlantUML Architect gives Codex a draft-review-approve workflow for UML use case, sequence, class, activity, component, and deployment diagrams. It recognizes English and Vietnamese diagram requests such as PlantUML, UML, vẽ UML, sơ đồ use case, sơ đồ lớp, bấm duyệt, and thiết kế kiến trúc. It creates PlantUML files under docs/architecture, waits for user approval before final SVG/PNG rendering, and can create a local Codex HTML editor for drag-and-drop diagram editing without diagrams.net or remote services.",
+    "shortDescription": "Design web architecture and UML with PlantUML.",
+    "longDescription": "PlantUML Architect gives Codex a diagram-as-code workflow for UML use case, sequence, class, activity, component, and deployment diagrams. It recognizes English and Vietnamese diagram requests such as PlantUML, UML, vẽ UML, sơ đồ use case, sơ đồ lớp, and thiết kế kiến trúc. It creates PlantUML files under docs/architecture and renders them to SVG through the local PlantUML CLI.",
     "developerName": "Local developer",
     "category": "Productivity",
     "capabilities": [
       "PlantUML diagrams",
       "UML architecture planning",
-      "Approval-gated rendering",
-      "Local Codex diagram editor",
       "Vietnamese UML requests",
       "Web application design"
     ],
-    "defaultPrompt": "Draft the architecture first with PlantUML diagrams, wait for approval, then render final diagrams and implement the web application."
+    "defaultPrompt": "Design the architecture first with PlantUML diagrams, then implement the web application."
   }
 }

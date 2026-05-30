@@ -1,14 +1,13 @@
 # PlantUML Architect for Codex
 
-PlantUML Architect is a local Codex plugin that makes Codex design web application architecture before coding. It creates PlantUML source files for use case, component, sequence, class, activity, and deployment diagrams, lets users review or edit the draft, then renders final SVG/PNG only after approval.
+PlantUML Architect is a local Codex plugin that makes Codex design web application architecture before coding. It creates PlantUML source files for use case, component, sequence, class, activity, and deployment diagrams, then renders final SVG/PNG through the local PlantUML CLI.
 
 ## What It Does
 
 - Enforces a diagram-as-code workflow for web projects.
 - Creates architecture files under `docs/architecture/`.
 - Provides reusable PlantUML templates for common UML diagrams.
-- Renders `.puml` or `.plantuml` files to `.svg` or `.png` only after explicit approval.
-- Creates a local Codex HTML editor for manual drag-and-drop editing without remote services.
+- Renders `.puml` or `.plantuml` files to `.svg` or `.png`.
 - Keeps PlantUML runtime separate from the repository so the plugin stays lightweight.
 
 ## Install In Codex
@@ -45,8 +44,7 @@ Vẽ UML cho web quản lý thư viện.
 Tạo use case diagram trước khi code.
 Thiết kế kiến trúc PlantUML cho app bán hàng.
 Generate sequence diagram for checkout flow.
-Tạo editor trong Codex để kéo thả chỉnh sơ đồ.
-Duyệt rồi render final SVG.
+Render final SVG.
 ```
 
 ## Runtime Requirements
@@ -103,27 +101,16 @@ The skill guides Codex to create:
 Default workflow:
 
 1. Codex creates draft `.puml` files.
-2. You review or edit the draft.
-3. If manual layout editing is needed, create/edit a local Codex HTML editor.
-4. After you approve the draft, render final SVG/PNG.
+2. You review the PlantUML source.
+3. Render final SVG/PNG.
 
-Approve and render PlantUML diagrams:
+Render PlantUML diagrams:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\approve-render.ps1 `
-  -Approved `
+powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\render-plantuml.ps1 `
   -InputPath .\docs\architecture `
   -OutputDir .\docs\architecture\out
 ```
-
-Create a local Codex editor when you need manual drag-and-drop edits:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\create-codex-editor.ps1 `
-  -OutputPath .\docs\architecture\codex-diagram-editor.html
-```
-
-Open the generated HTML file locally in Codex/in-app browser or a local browser. It supports dragging actors/use cases, editing labels, adding connectors, approving the draft, and exporting SVG/PNG. It does not call any remote service.
 
 ## Repository Layout
 
@@ -134,11 +121,8 @@ plugins/
     .codex-plugin/plugin.json
     skills/plantuml-architect/SKILL.md
     scripts/render-plantuml.ps1
-    scripts/approve-render.ps1
     scripts/install-plantuml-runtime.ps1
-    scripts/create-codex-editor.ps1
     templates/*.puml
-    tools/codex-diagram-editor.html
     assets/README.md
 ```
 
