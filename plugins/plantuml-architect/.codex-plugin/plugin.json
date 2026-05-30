@@ -9,12 +9,13 @@
   "interface": {
     "displayName": "PlantUML Architect",
     "shortDescription": "Design web architecture and UML with PlantUML before coding.",
-    "longDescription": "PlantUML Architect gives Codex a diagram-as-code workflow for UML use case, sequence, class, activity, component, and deployment diagrams. It recognizes English and Vietnamese diagram requests such as PlantUML, UML, vẽ UML, sơ đồ use case, sơ đồ lớp, and thiết kế kiến trúc. It creates PlantUML files under docs/architecture and renders them to SVG through the local PlantUML CLI.",
+    "longDescription": "PlantUML Architect gives Codex a diagram-as-code workflow for UML use case, sequence, class, activity, component, and deployment diagrams. It recognizes English and Vietnamese diagram requests such as PlantUML, UML, vẽ UML, sơ đồ use case, sơ đồ lớp, and thiết kế kiến trúc. It creates PlantUML files under docs/architecture, renders them to SVG through the local PlantUML CLI, and can create editable draw.io handoff files for drag-and-drop presentation tweaks.",
     "developerName": "Local developer",
     "category": "Productivity",
     "capabilities": [
       "PlantUML diagrams",
       "UML architecture planning",
+      "Draw.io handoff diagrams",
       "Vietnamese UML requests",
       "Web application design"
     ],

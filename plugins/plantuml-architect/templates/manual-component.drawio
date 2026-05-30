@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net" modified="2026-05-30T00:00:00.000Z" agent="PlantUML Architect" version="26.0.0" type="device">
+  <diagram id="manual-component" name="Manual Component Diagram">
+    <mxGraphModel dx="1300" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Manual Architecture Handoff" style="text;html=1;strokeColor=none;fillColor=none;fontSize=24;fontStyle=1;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="30" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Editable draw.io copy for presentation tweaks. Keep .puml files as the source of truth." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#fed7aa;fontColor=#9a3412;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="560" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="user" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#f8fafc;strokeColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="90" y="230" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="client" value="Client" style="swimlane;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#60a5fa;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="170" width="220" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="browser" value="Browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#334155;" vertex="1" parent="client">
+          <mxGeometry x="40" y="60" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="web-ui" value="Web UI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#334155;" vertex="1" parent="client">
+          <mxGeometry x="40" y="140" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="server" value="Server" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#86efac;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="170" width="320" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="API Routes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#334155;" vertex="1" parent="server">
+          <mxGeometry x="55" y="55" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="auth" value="Auth Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#334155;" vertex="1" parent="server">
+          <mxGeometry x="55" y="125" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="domain" value="Domain Services" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#334155;" vertex="1" parent="server">
+          <mxGeometry x="55" y="195" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="data" value="Data" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fdf2f8;strokeColor=#f9a8d4;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="190" width="200" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="Database" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8fafc;strokeColor=#334155;" vertex="1" parent="data">
+          <mxGeometry x="45" y="60" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="external" value="External Providers" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8fafc;strokeColor=#334155;" vertex="1" parent="data">
+          <mxGeometry x="35" y="160" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-user-browser" value="" style="endArrow=block;html=1;rounded=0;strokeColor=#334155;" edge="1" parent="1" source="user" target="browser">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-browser-ui" value="" style="endArrow=block;html=1;rounded=0;strokeColor=#334155;" edge="1" parent="1" source="browser" target="web-ui">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ui-api" value="HTTPS" style="endArrow=block;html=1;rounded=0;strokeColor=#334155;" edge="1" parent="1" source="web-ui" target="api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-api-auth" value="" style="endArrow=block;html=1;rounded=0;strokeColor=#334155;" edge="1" parent="1" source="api" target="auth">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-api-domain" value="" style="endArrow=block;html=1;rounded=0;strokeColor=#334155;" edge="1" parent="1" source="api" target="domain">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-domain-db" value="SQL/ORM" style="endArrow=block;html=1;rounded=0;strokeColor=#334155;" edge="1" parent="1" source="domain" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-domain-external" value="API" style="endArrow=block;html=1;rounded=0;strokeColor=#334155;" edge="1" parent="1" source="domain" target="external">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

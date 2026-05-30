@@ -8,6 +8,7 @@ PlantUML Architect is a local Codex plugin that makes Codex design web applicati
 - Creates architecture files under `docs/architecture/`.
 - Provides reusable PlantUML templates for common UML diagrams.
 - Renders `.puml` or `.plantuml` files to `.svg` or `.png`.
+- Creates optional `.drawio` handoff files for manual drag-and-drop editing in diagrams.net/draw.io.
 - Keeps PlantUML runtime separate from the repository so the plugin stays lightweight.
 
 ## Install In Codex
@@ -38,6 +39,7 @@ Vẽ UML cho web quản lý thư viện.
 Tạo use case diagram trước khi code.
 Thiết kế kiến trúc PlantUML cho app bán hàng.
 Generate sequence diagram for checkout flow.
+Tạo bản draw.io để kéo thả chỉnh sơ đồ.
 ```
 
 ## Runtime Requirements
@@ -99,6 +101,15 @@ powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\re
   -OutputDir .\docs\architecture\out
 ```
 
+Create an editable draw.io handoff when you need manual drag-and-drop edits:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\create-drawio-handoff.ps1 `
+  -OutputPath .\docs\architecture\manual-edit.drawio
+```
+
+Open the `.drawio` file in diagrams.net/draw.io. PlantUML remains the source of truth; the draw.io file is a presentation/manual-edit copy and can drift from the `.puml` source.
+
 ## Repository Layout
 
 ```text
@@ -109,7 +120,9 @@ plugins/
     skills/plantuml-architect/SKILL.md
     scripts/render-plantuml.ps1
     scripts/install-plantuml-runtime.ps1
+    scripts/create-drawio-handoff.ps1
     templates/*.puml
+    templates/manual-component.drawio
     assets/README.md
 ```
 
