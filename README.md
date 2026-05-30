@@ -13,17 +13,23 @@ PlantUML Architect is a local Codex plugin that makes Codex design web applicati
 
 ## Install In Codex
 
-Clone this repository:
+Open PowerShell, then clone this repository:
 
 ```powershell
 git clone https://github.com/lux0166/plantuml-architect.git
 cd plantuml-architect
 ```
 
-Add this repository as a Codex plugin marketplace:
+Add this repository as a Codex plugin marketplace from inside the cloned folder:
 
 ```powershell
 codex plugin marketplace add .
+```
+
+The `.` means "the current folder". If you are not inside the cloned folder, pass the full path instead:
+
+```powershell
+codex plugin marketplace add C:\path\to\plantuml-architect
 ```
 
 Then open Codex and install the `plantuml-architect` plugin from the `PlantUML Architect` marketplace.
