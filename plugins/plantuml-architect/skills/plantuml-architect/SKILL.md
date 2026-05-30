@@ -1,11 +1,21 @@
 ---
 name: plantuml-architect
-description: Use when the user asks for PlantUML, UML, use case diagrams, sequence diagrams, class diagrams, activity diagrams, component diagrams, deployment diagrams, architecture diagrams, or Vietnamese requests such as "thiet ke kien truc" before building a web app. Enforces a diagram-as-code workflow before implementation.
+description: Use when the user asks for PlantUML, UML, use case diagrams, sequence diagrams, class diagrams, activity diagrams, component diagrams, deployment diagrams, architecture diagrams, diagram-as-code, or Vietnamese requests such as "ve UML", "vẽ UML", "vẽ use case", "sơ đồ use case", "sơ đồ tuần tự", "sơ đồ lớp", "sơ đồ hoạt động", "sơ đồ thành phần", "sơ đồ triển khai", "bản vẽ kiến trúc", "thiết kế kiến trúc", or "thiet ke kien truc" before building a web app. Enforces a diagram-as-code workflow before implementation.
 ---
 
 # PlantUML Architect
 
 Use this skill whenever architecture diagrams should be created before coding, especially for web applications.
+
+## Invocation Examples
+
+Users can trigger this skill naturally after installing the plugin:
+
+- "Vẽ UML cho web quản lý thư viện."
+- "Tạo use case diagram trước khi code."
+- "Thiết kế kiến trúc PlantUML cho app bán hàng."
+- "Generate sequence diagram for checkout flow."
+- "Update architecture diagrams after code changes."
 
 ## Core Workflow
 

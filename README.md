@@ -27,6 +27,19 @@ codex plugin marketplace add .
 
 Then open Codex and install the `plantuml-architect` plugin from the `PlantUML Architect` marketplace.
 
+## How Codex Recognizes It
+
+After the plugin is installed and enabled, Codex can pick up the skill from normal prompts that mention PlantUML, UML, use case, sequence diagram, class diagram, architecture diagram, or Vietnamese phrases such as `vẽ UML`, `vẽ use case`, `sơ đồ lớp`, `sơ đồ tuần tự`, and `thiết kế kiến trúc`.
+
+Example prompts:
+
+```text
+Vẽ UML cho web quản lý thư viện.
+Tạo use case diagram trước khi code.
+Thiết kế kiến trúc PlantUML cho app bán hàng.
+Generate sequence diagram for checkout flow.
+```
+
 ## Runtime Requirements
 
 Java/JDK 17 or newer is required. The renderer calls `java` locally, so Java must be available in PATH, `JAVA_HOME\bin\java.exe`, or a standard Windows install path such as `C:\Program Files\Java\...\bin\java.exe`.
