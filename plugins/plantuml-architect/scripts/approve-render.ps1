@@ -39,16 +39,15 @@ if (-not $resolvedInput) {
 }
 
 $inputItem = Get-Item -LiteralPath $resolvedInput.Path
-if (-not $inputItem.PSIsContainer -and $inputItem.Extension -eq ".drawio") {
-  Fail "Draw.io files are editable drafts. Open the .drawio file in diagrams.net/draw.io and export SVG/PNG after approval, or install draw.io Desktop and use its export command. PlantUML rendering only supports .puml/.plantuml input." 4
+if (-not $inputItem.PSIsContainer -and $inputItem.Extension -notin @(".puml", ".plantuml")) {
+  Fail "Unsupported input file. Approval rendering supports .puml/.plantuml files. Use the local Codex HTML editor for manual visual editing and export." 4
 }
 
 if ($inputItem.PSIsContainer) {
-  $drawioFiles = Get-ChildItem -LiteralPath $inputItem.FullName -Recurse -File -Filter *.drawio
   $plantUmlFiles = Get-ChildItem -LiteralPath $inputItem.FullName -Recurse -File |
     Where-Object { $_.Extension -in @(".puml", ".plantuml") }
-  if ($drawioFiles.Count -gt 0 -and $plantUmlFiles.Count -eq 0) {
-    Fail "Only .drawio files were found. Export those from diagrams.net/draw.io after approval. No .puml/.plantuml files were found for PlantUML rendering." 5
+  if ($plantUmlFiles.Count -eq 0) {
+    Fail "No .puml/.plantuml files were found for approval rendering. Use the local Codex HTML editor for manual visual editing and export." 5
   }
 }
 

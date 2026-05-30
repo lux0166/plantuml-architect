@@ -8,7 +8,7 @@ PlantUML Architect is a local Codex plugin that makes Codex design web applicati
 - Creates architecture files under `docs/architecture/`.
 - Provides reusable PlantUML templates for common UML diagrams.
 - Renders `.puml` or `.plantuml` files to `.svg` or `.png` only after explicit approval.
-- Creates optional `.drawio` handoff files for manual drag-and-drop editing in diagrams.net/draw.io.
+- Creates a local Codex HTML editor for manual drag-and-drop editing without remote services.
 - Keeps PlantUML runtime separate from the repository so the plugin stays lightweight.
 
 ## Install In Codex
@@ -45,7 +45,7 @@ Vẽ UML cho web quản lý thư viện.
 Tạo use case diagram trước khi code.
 Thiết kế kiến trúc PlantUML cho app bán hàng.
 Generate sequence diagram for checkout flow.
-Tạo bản draw.io để kéo thả chỉnh sơ đồ.
+Tạo editor trong Codex để kéo thả chỉnh sơ đồ.
 Duyệt rồi render final SVG.
 ```
 
@@ -104,7 +104,7 @@ Default workflow:
 
 1. Codex creates draft `.puml` files.
 2. You review or edit the draft.
-3. If manual layout editing is needed, create/edit a `.drawio` handoff.
+3. If manual layout editing is needed, create/edit a local Codex HTML editor.
 4. After you approve the draft, render final SVG/PNG.
 
 Approve and render PlantUML diagrams:
@@ -116,14 +116,14 @@ powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\ap
   -OutputDir .\docs\architecture\out
 ```
 
-Create an editable draw.io handoff when you need manual drag-and-drop edits:
+Create a local Codex editor when you need manual drag-and-drop edits:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\create-drawio-handoff.ps1 `
-  -OutputPath .\docs\architecture\manual-edit.drawio
+powershell -ExecutionPolicy Bypass -File .\plugins\plantuml-architect\scripts\create-codex-editor.ps1 `
+  -OutputPath .\docs\architecture\codex-diagram-editor.html
 ```
 
-Open the `.drawio` file in diagrams.net/draw.io or draw.io Desktop. Export SVG/PNG from draw.io after approval. PlantUML remains the source of truth; the draw.io file is a presentation/manual-edit copy and can drift from the `.puml` source.
+Open the generated HTML file locally in Codex/in-app browser or a local browser. It supports dragging actors/use cases, editing labels, adding connectors, approving the draft, and exporting SVG/PNG. It does not call any remote service.
 
 ## Repository Layout
 
@@ -136,9 +136,9 @@ plugins/
     scripts/render-plantuml.ps1
     scripts/approve-render.ps1
     scripts/install-plantuml-runtime.ps1
-    scripts/create-drawio-handoff.ps1
+    scripts/create-codex-editor.ps1
     templates/*.puml
-    templates/manual-component.drawio
+    tools/codex-diagram-editor.html
     assets/README.md
 ```
 
